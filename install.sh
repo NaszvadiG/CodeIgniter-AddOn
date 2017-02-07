@@ -2,23 +2,32 @@
 set -e
 
 DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-BUILD_DIR=${DIR}/CodeIgniter
+BUILD_DIR=../${DIR}/CodeIgniter
 
 # PRE
 rm -rf ${BUILD_DIR}
+rm -rf ../.tmp
+mkdir ../.tmp
+
 
 #######################
 # CodeIgniter 
 #######################
+pushd ../
 
-# CODEIGNITER
+# CodeIgniter
 git clone https://github.com/bcit-ci/CodeIgniter.git
-git clone https://github.com/zblues/CodeIgniter.git
 
-# PHPExcel
+# CodeIgniter-AddOn
+rsync -ac CodeIgniter-AddOn/application CodeIgniter
+rsync -ac CodeIgniter-AddOn/assets CodeIgniter
+
+# PHPExcel : .tmp
+pushd .tmp
 git clone https://github.com/PHPOffice/PHPExcel.git
 pushd PHPExcel
-cp Classes/* ${BUILD_DIR}/application/libraries
+rsync -ac Classes/* ${BUILD_DIR}/application/libraries
+popd
 popd
 
 
@@ -34,3 +43,7 @@ git clone https://github.com/twbs/bootstrap.git
 git clone https://github.com/FortAwesome/Font-Awesome.git
 
 popd
+
+
+# CLEANUP
+rm -rf .tmp
