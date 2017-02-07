@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-BUILD_DIR=../${DIR}/CodeIgniter
+HOME_DIR=${PWD}/..
+BUILD_DIR=${HOME_DIR}/CodeIgniter
 
 # PRE
 rm -rf ${BUILD_DIR}
@@ -34,7 +34,7 @@ popd
 #######################
 # assets 
 #######################
-pushd assets
+pushd CodeIgniter/assets
 
 # Bootstrap
 git clone https://github.com/twbs/bootstrap.git
@@ -46,4 +46,4 @@ popd
 
 
 # CLEANUP
-rm -rf .tmp
+rm -rf .tmp CodeIgniter-AddOn
