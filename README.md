@@ -20,3 +20,9 @@ git clone https://github.com/scoumbourdis/codeigniter-simplicity.git
 ```
 git clone https://github.com/PHPOffice/PHPExcel.git
 ```
+
+## Bootstrap 설치
+```
+cd assets
+git clone https://github.com/twbs/bootstrap.git
+```
