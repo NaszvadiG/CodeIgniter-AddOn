@@ -27,7 +27,10 @@ popd
 #######################
 pushd assets
 
-# BOOTSTRAP
+# Bootstrap
 git clone https://github.com/twbs/bootstrap.git
+
+# Font Awesome
+git clone https://github.com/FortAwesome/Font-Awesome.git
 
 popd
